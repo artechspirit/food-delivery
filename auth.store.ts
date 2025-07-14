@@ -1,0 +1,39 @@
+import { create } from "zustand";
+import { getCurrentUser } from "./lib/appwrite";
+import { User } from "./type";
+
+type AuthState = {
+  isAuthenticated: boolean;
+  user: User | null;
+  isLoading: boolean;
+  setIsAuthenticated: (value: boolean) => void;
+  setUser: (value: User | null) => void;
+  setLoading: (value: boolean) => void;
+  fetchAuthenticatedUser: () => Promise<void>;
+};
+
+export const useAuthStore = create<AuthState>((set) => ({
+  isAuthenticated: false,
+  user: null,
+  isLoading: false,
+  setIsAuthenticated: (value) => set({ isAuthenticated: value }),
+  setUser: (value) => set({ user: value }),
+  setLoading: (value) => set({ isLoading: value }),
+  fetchAuthenticatedUser: async () => {
+    set({ isLoading: true });
+
+    try {
+      const user = await getCurrentUser();
+      if (user) {
+        set({ isAuthenticated: true, user: user as User });
+      } else {
+        set({ isAuthenticated: false, user: null });
+      }
+    } catch (error) {
+      console.log("fetchAuthenticatedUser error: ", error);
+      set({ isLoading: false });
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+}));

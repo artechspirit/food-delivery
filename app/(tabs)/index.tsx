@@ -1,3 +1,4 @@
+import { useAuthStore } from "@/auth.store";
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
 import cn from "clsx";
@@ -13,6 +14,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
+  const { user } = useAuthStore();
+
+  console.log("user", JSON.stringify(user, null, 2));
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <FlatList
