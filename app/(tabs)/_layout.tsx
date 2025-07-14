@@ -7,24 +7,22 @@ import { Image, Text, View } from "react-native";
 
 const TabBarIcon = ({ focused, icon, title }: TabBarIconProps) => {
   return (
-    <View className="w-full h-full">
-      <View className="w-full h-full">
-        <Image
-          source={icon}
-          className="w-8 h-8 mb-1"
-          resizeMode="contain"
-          tintColor={focused ? "#FE8C00" : "#5D5F6D"}
-        />
+    <View className="mt-5">
+      <Image
+        source={icon}
+        className="w-8 h-8 mb-1 block m-auto"
+        resizeMode="contain"
+        tintColor={focused ? "#FE8C00" : "#5D5F6D"}
+      />
 
-        <Text
-          className={cn(
-            "text-xs text-center",
-            focused ? "text-primary" : "text-gray-200"
-          )}
-        >
-          {title}
-        </Text>
-      </View>
+      <Text
+        className={cn(
+          "text-base font-quicksand-bold w-full text-center",
+          focused ? "text-primary" : "text-gray-200"
+        )}
+      >
+        {title}
+      </Text>
     </View>
   );
 };
@@ -45,7 +43,7 @@ const TabsLayout = () => {
           borderTopRightRadius: 50,
           borderBottomRightRadius: 50,
           marginHorizontal: 20,
-          height: 80,
+          height: 90,
           position: "absolute",
           bottom: 47,
           backgroundColor: "white",
