@@ -7,7 +7,7 @@ import { Image, Text, View } from "react-native";
 
 const TabBarIcon = ({ focused, icon, title }: TabBarIconProps) => {
   return (
-    <View className="mt-5">
+    <View className="mt-4">
       <Image
         source={icon}
         className="w-8 h-8 mb-1 block m-auto"
@@ -43,7 +43,7 @@ const TabsLayout = () => {
           borderTopRightRadius: 50,
           borderBottomRightRadius: 50,
           marginHorizontal: 20,
-          height: 90,
+          height: 80,
           position: "absolute",
           bottom: 47,
           backgroundColor: "white",
