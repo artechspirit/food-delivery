@@ -6,6 +6,7 @@ import {
   Databases,
   ID,
   Query,
+  Storage,
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -13,7 +14,12 @@ export const appwriteConfig = {
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
   platform: "com.artechspirit.fooddelivery",
   databaseId: "6874e2fa003b304e77f9",
+  bucketId: "68752b1e002e2d252fb7",
   userCollectionId: "6874e32f0002c73787a7",
+  categoriesCollectionId: "68751dc30001bd4285d9",
+  menuCollectionId: "6875246300040719a120",
+  customizationsCollectionId: "6875265f0016c40c3e6a",
+  menuCustomizationsCollectionId: "6875278000390e8db89d",
 };
 
 export const client = new Client();
@@ -26,6 +32,7 @@ client
 export const account = new Account(client);
 export const databases = new Databases(client);
 export const avatars = new Avatars(client);
+export const storage = new Storage(client);
 
 export const createUser = async ({
   email,
@@ -53,7 +60,7 @@ export const createUser = async ({
 
 export const signIn = async ({ email, password }: SignInParams) => {
   try {
-    const session = await account.createEmailPasswordSession(email, password);
+    await account.createEmailPasswordSession(email, password);
   } catch (error) {
     throw new Error(error as string);
   }
