@@ -1,6 +1,6 @@
-import { useAuthStore } from "@/auth.store";
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
+import { useAuthStore } from "@/store/auth.store";
 import cn from "clsx";
 import { Fragment } from "react";
 import {
